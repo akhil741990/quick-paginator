@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 
 import com.soul.pagination.db.HibernateUtil;
 import com.soul.pagination.db.entities.AuditLog;
+import com.soul.pagination.db.entities.Student;
 
 public class HibernateTest {
 
@@ -16,13 +17,16 @@ public class HibernateTest {
         session.beginTransaction();
          
         
-        AuditLog log = new AuditLog();
-        log.setAction("Test_Action");
-        log.setCreatedDate(new Date(System.currentTimeMillis()));
-        log.setDetail("TestDetail");
-        log.setEntityId(1);
-        log.setEntityName("ENTITY_NAME");
-        session.save(log);
+        Student student = new Student();
+        student.setFirstName("Bob");
+        student.setAge(26);
+//        AuditLog log = new AuditLog();
+//        log.setAction("Test_Action");
+//        log.setCreatedDate(new Date(System.currentTimeMillis()));
+//        log.setDetail("TestDetail");
+//        log.setEntityId(1);
+//        log.setEntityName("ENTITY_NAME");
+        session.save(student);
         session.getTransaction().commit();
          
         session.close();

@@ -13,6 +13,7 @@
         <property name="connection.pool_size">1</property>
          
         <mapping class="com.soul.pagination.db.entities.AuditLog"></mapping>
+ 		<mapping class="com.soul.pagination.db.entities.Student"></mapping>
  
     </session-factory>
 </hibernate-configuration>
