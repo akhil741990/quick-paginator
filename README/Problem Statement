@@ -1,0 +1,20 @@
+Student
+   id
+   name
+   roll no 
+
+School
+   id
+   name
+   
+   
+Subject
+   id
+   name
+   total_marks    
+   pass_marks
+   
+Student_Marks
+   Student_id
+   Subject_id
+   Marks   
