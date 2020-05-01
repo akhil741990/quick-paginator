@@ -6,14 +6,15 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">password</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/pagination</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/paginator</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
         <property name="show_sql">true</property> 
         <property name="connection.pool_size">1</property>
+        <property name="hibernate.jdbc.batch_size">100</property>
          
-        <mapping class="com.soul.pagination.db.entities.AuditLog"></mapping>
- 		<mapping class="com.soul.pagination.db.entities.Student"></mapping>
+        <mapping class="com.soul.pagination.db.entities.Advertiser"></mapping>
+ 		<mapping class="com.soul.pagination.db.entities.InsertionOrder"></mapping>
  
     </session-factory>
 </hibernate-configuration>

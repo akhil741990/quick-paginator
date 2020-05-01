@@ -1,0 +1,1 @@
+https://javadeveloperzone.com/elastic-search/esindex-large-json-file-example/

@@ -16,3 +16,22 @@ CREATE TABLE  `auditlog` (
        `ENTITY_NAME` varchar(255) NOT NULL,
        PRIMARY KEY (`AUDIT_LOG_ID`)
  ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+ 
+ 
+ 
+  CREATE TABLE `advertiser` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+ CREATE TABLE `insertion_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `advertiser_id`int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (id) REFERENCES advertiser(id)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+

@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 
 import com.soul.pagination.db.HibernateUtil;
 import com.soul.pagination.db.audit.DbOpsListener;
+import com.soul.pagination.db.entities.Advertiser;
 import com.soul.pagination.db.entities.Student;
 
 public class HibernateTest {
@@ -16,21 +17,27 @@ public class HibernateTest {
 		
 		Session session =  sessionFactory.withOptions().interceptor(new DbOpsListener()).openSession();
         
-        session.beginTransaction();
+		session.beginTransaction();
          
-        
-        Student student = new Student();
-        student.setFirstName("Tom");
-        student.setAge(16);
-//        AuditLog log = new AuditLog();
-//        log.setAction("Test_Action");
-//        log.setCreatedDate(new Date(System.currentTimeMillis()));
-//        log.setDetail("TestDetail");
-//        log.setEntityId(1);
-//        log.setEntityName("ENTITY_NAME");
-        session.save(student);
-        session.getTransaction().commit();
-         
+        for(int i =1 ;i <= 10000;i++){
+        	   Advertiser adv = new Advertiser();
+               adv.setName("ADV_"+i);
+               adv.setAddress("ADDRESS_"+i);
+//               AuditLog log = new AuditLog();
+//               log.setAction("Test_Action");
+//               log.setCreatedDate(new Date(System.currentTimeMillis()));
+//               log.setDetail("TestDetail");
+//               log.setEntityId(1);
+//               log.setEntityName("ENTITY_NAME");
+               session.save(adv);
+               if(i%100 ==0){
+            	   session.flush();
+            	   session.clear();
+            	   System.out.print("Records saved = " +i);
+               }
+               
+        }
+        session.getTransaction().commit(); 
         session.close();
 	}
 }
