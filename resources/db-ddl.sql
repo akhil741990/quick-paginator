@@ -26,12 +26,26 @@ CREATE TABLE  `auditlog` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-
  CREATE TABLE `insertion_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
   `advertiser_id`int(11) NOT NULL,
+  `is_active` int(1) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (advertiser_id) REFERENCES advertiser(id)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+
+
+ CREATE TABLE `line_item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `io_id`int(11) NOT NULL,
+  `imp` BIGINT NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (io_id) REFERENCES insertion_order(id)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
 

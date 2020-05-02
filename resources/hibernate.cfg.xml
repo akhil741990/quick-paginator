@@ -15,6 +15,7 @@
          
         <mapping class="com.soul.pagination.db.entities.Advertiser"></mapping>
  		<mapping class="com.soul.pagination.db.entities.InsertionOrder"></mapping>
+ 		<mapping class="com.soul.pagination.db.entities.LineItem"></mapping>
  
     </session-factory>
 </hibernate-configuration>

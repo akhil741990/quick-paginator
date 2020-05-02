@@ -1,10 +1,13 @@
 package com.soul.pagination.db.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.ManyToAny;
 
@@ -18,6 +21,10 @@ public class InsertionOrder {
 	@ManyToOne
 	@JoinColumn(name="advertiser_id", referencedColumnName="id")
 	private Advertiser adv;
+	
+	@OneToMany
+	@JoinColumn(name="io_id")
+	private List<LineItem> lis;
 	
 	public Integer getId() {
 		return id;

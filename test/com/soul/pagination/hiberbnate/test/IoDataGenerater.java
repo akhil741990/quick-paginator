@@ -45,15 +45,17 @@ public class IoDataGenerater {
 				// TODO Auto-generated method stub
 				PreparedStatement stm = null;
 				try {
-					String query = "insert into insertion_order(name,advertiser_id) values (?,?)";
+					String query = "insert into insertion_order(name,advertiser_id,is_active) values (?,?,?)";
 					stm  = conn.prepareStatement(query);
 					int min = 10002;
 					int max = 20001;
 					for(int j =1;j<=50000;j++){				
 						int i =  (int) ((Math.random() * (max - min)) + min);
+						int isActive = (j%3)==0 ? 0 : 1; 
 						if(ids.contains(i)){
 							stm.setString(1,"IO_"+j);
 							stm.setInt(2, i);
+							stm.setInt(3, isActive);
 							stm.addBatch();
 						}
 						//System.out.println("Adv Id :" + i);
