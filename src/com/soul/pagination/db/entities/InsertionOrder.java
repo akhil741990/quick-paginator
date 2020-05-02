@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name="insertion_order")
 public class InsertionOrder {
 
@@ -20,8 +22,15 @@ public class InsertionOrder {
 	private String name;
 	@ManyToOne
 	@JoinColumn(name="advertiser_id", referencedColumnName="id")
+	@JsonIgnore
 	private Advertiser adv;
 	
+	public List<LineItem> getLis() {
+		return lis;
+	}
+	public void setLis(List<LineItem> lis) {
+		this.lis = lis;
+	}
 	@OneToMany
 	@JoinColumn(name="io_id")
 	private List<LineItem> lis;
