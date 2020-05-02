@@ -32,6 +32,6 @@ CREATE TABLE  `auditlog` (
   `name` varchar(20) NOT NULL,
   `advertiser_id`int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (id) REFERENCES advertiser(id)
+  FOREIGN KEY (advertiser_id) REFERENCES advertiser(id)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
