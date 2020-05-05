@@ -2,6 +2,7 @@ package com.soul.pagination.db.entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -35,6 +36,15 @@ public class InsertionOrder {
 	@JoinColumn(name="io_id")
 	private List<LineItem> lis;
 	
+	@Column(name="is_active")
+	private int isActive;
+	
+	public int getIsActive() {
+		return isActive;
+	}
+	public void setIsActive(int isActive) {
+		this.isActive = isActive;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -53,4 +63,5 @@ public class InsertionOrder {
 	public void setAdv(Advertiser adv) {
 		this.adv = adv;
 	}
+	
 }
