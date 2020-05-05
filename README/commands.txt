@@ -1,0 +1,70 @@
+
+
+===========================================================================================================================
+start
+
+sudo systemctl start elasticsearch.service
+
+
+===========================================================================================================================
+
+Bulk Insert :
+
+curl -H "Content-Type: application/json" -POST "localhost:9200/bank1/_bulk?pretty&refresh" --data-binary "@accounts.json"
+
+
+===========================================================================================================================
+
+list indexes : 
+curl "localhost:9200/_cat/indices?v"
+
+
+
+===========================================================================================================================
+Search:
+
+
+curl -X GET "localhost:9200/advertiser/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match_all": {}
+    }
+}
+'
+
+
+curl -X GET "localhost:9200/advertiser/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match": {"ios.isActive" : 1}
+    }
+}
+'
+
+
+curl -X GET "localhost:9200/advertiser/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+  "query": { "match": {"id" : 2} }
+}
+'
+
+===========================================================================================================================
+
+Mapping:
+
+curl -X GET "localhost:9200/advertiser/_mapping?pretty"
+
+
+===========================================================================================================================
+DELETE :
+curl -X DELETE "localhost:9200/advertiser?pretty"
+
+
+
+===========================================================================================================================
+count 
+
+curl -X GET "localhost:9200/advertiser/_count?q=ios.isActive:0"
+
+
+============================================================================================================================
