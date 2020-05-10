@@ -15,6 +15,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.message.BasicHeader;
+import org.apache.http.nio.entity.NStringEntity;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.Args;
 import org.apache.http.util.CharArrayBuffer;
@@ -41,6 +42,27 @@ public class ESClient {
 				//JSONObject jsonObj = toJson(responseBody);
 				
 				System.out.println("Response :"+responseBody);
+				
+				//Search API 
+				
+				
+				/*
+				 * {
+    "query": {
+        "match": {"ios.isActive" : 1}
+    }
+}
+				 */
+				HttpEntity e = new NStringEntity("{"+
+    "\"query\": {"+
+        "\"match\": {\"ios.isActive\" : 1}"+
+			    "}"+
+			"}", ContentType.APPLICATION_JSON);
+				response = restClient.performRequest("GET", "/advertiser/_search", Collections.singletonMap("pretty", "true"),e);
+				responseBody = readBody(response.getEntity(),null);
+				//JSONObject jsonObj = toJson(responseBody);
+				
+				System.out.println("SearchResponse :"+responseBody);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
